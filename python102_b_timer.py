@@ -1,3 +1,6 @@
+import argparse
+
+from time import sleep
 from datetime import datetime, date, timedelta
 from gi.repository import Notify
 
@@ -62,7 +65,7 @@ class Clock:
         self.end_time = datetime.now() + timedelta(self.right_now.interval_length)
         time_string += self.end_time.strftime("%H:%M:%S")
         Notify.init('test')
-        notify_me = Notify.Notification.new(title, time_string)
+        notify_me = Notify.Notification.new(timer_title, time_string)
         notify_me.show()
         
     def ticking_clock(self):
@@ -70,4 +73,23 @@ class Clock:
         while True:
             if datetime.now() >= self.end_time:
                 self.change_event()
+                sleep(0.1)
                 
+def main():
+    try:
+        ap = argparse.ArgumentParser()
+        
+        ap.add_argument('--work_duration', help='the length of the working session', type=int, default=25)
+        ap.add_argument('--break_duration_short', help='the length of a short break', type=int, default=5)
+        ap.add_argument('--break_duration_long', help='the length of a long break', type=int, default=30)
+        
+        arguments = ap.parse_args()
+        
+        time_clock = Clock(arguments.work_duration, arguments.break_duration_short, arguments.break_duration_long)
+        time_clock.ticking_clock()
+    except Exception as e:
+        print('One or more arguments are invalid.', str(e))
+        exit(1)
+        
+if __name__ == '__main__':
+    main() 
