@@ -51,5 +51,33 @@ print('Check it out, {}, came off at index 2.'.format(l2))
 print('So the list is now: ', lst)
 lst.insert(2, 'lala')
 print('The list with a new `insert`: ', lst)
+del lst[2]
+print('Then there\'s the `del` command...: ', lst)
+print('Nothing gets assigned. Just...(T_T)')
 
+bagels = {'jubbles': 30, 'ark': 31, 'lucy': 33}
+print('bagels: ', bagels)
 
+people = {}
+people['jubbles'] = 30
+print('people: ', people)
+people['ark'] = bagels['ark']
+print('people: ', people)
+print('bagels: ', bagels)
+
+print('bagel keys: ', bagels.keys())
+print('bagel values: ', bagels.values())
+print('bagel items: ', bagels.items())
+
+for keys in bagels.keys():
+    print('key = ', keys)
+    
+for values in bagels.values():
+    print('values = ', values)
+    
+for k, v in bagels.items():
+    print(k + ' ' + str(v))
+    
+for k, v in bagels.items():
+    print('%s is %s, haha' % (k, v))
+    
