@@ -20,3 +20,4 @@ elif christmas == date_of_today:
     print('Yay, it\'s Christmas!')
 else:
     print('According to that guy, this should be an error. But I couldn\'t think of one so...yeah.')
+
