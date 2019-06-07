@@ -44,8 +44,9 @@ class Clock:
         if self.right_now == None:
             self.right_now = self.work_time
             timer_title = 'Actively Working'
+            time_string = 'Start timer at:> '
             
-        elif self.right_now == self.work_time:
+        if self.right_now == self.work_time:
             self.remaining_sessions -= 1
             if self.remaining_breaks == 0:
                 self.right_now = self.long_break
@@ -53,17 +54,20 @@ class Clock:
             else:
                 self.right_now = self.short_break
                 timer_title = 'Take a short break.'
+                # time_string = 'Break timer at:> '
                 
         elif self.right_now == self.short_break:
             self.remaining_breaks -= 1
             self.right_now = self.work_sessions
             timer_title = 'Actively Working'
+            time_string = 'Short break timer at:> '
             
         elif self.right_now == self.long_break:
             self.right_now = self.work_sessions
             timer_title = 'Actively Working'
             self.remaining_sessions = self.work_sessions
             self.remaining_breaks = self.remaining_sessions - 1
+            time_string = 'Long break timer at:> '
         else:
             print('This is the same \' should be an error \' case as mentioned by that guy.')
         
@@ -72,7 +76,9 @@ class Clock:
         self.notifications(time_string)
         
     def ticking_clock(self):
+        print('1', self.right_now)
         self.change_event()
+        print('2', self.right_now)
         while True:
             if datetime.now() >= self.end_time:
                 self.change_event()
@@ -89,10 +95,10 @@ def main():
         
         # arguments = ap.parse_args()
         
-        work_duration, break_duration_short, break_duration_long = map(int, sys.argv[1:4])
+        work_time, short_break, long_break = map(int, sys.argv[1:4])
         
         # time_clock = Clock(arguments.work_duration, arguments.break_duration_short, arguments.break_duration_long)
-        time_clock = Clock(work_duration, break_duration_short, break_duration_long)
+        time_clock = Clock(work_time, short_break, long_break)
         time_clock.ticking_clock()
     except Exception as e:
         print('One or more arguments are invalid.', str(e))
