@@ -43,6 +43,7 @@ class Clock:
         
         if self.right_now == None:
             self.right_now = self.work_time
+            print(self.right_now.interval_length)
             timer_title = 'Actively Working'
             time_string = 'Start timer at:> '
             
@@ -76,9 +77,7 @@ class Clock:
         self.notifications(time_string)
         
     def ticking_clock(self):
-        print('1', self.right_now)
         self.change_event()
-        print('2', self.right_now)
         while True:
             if datetime.now() >= self.end_time:
                 self.change_event()

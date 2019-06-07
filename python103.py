@@ -68,3 +68,15 @@ for keyed, valued in sorted(commonly_used_words.items(), key = lambda x: x[1], r
     
 counted_common_words = Counter(words).most_common(5)
 print(counted_common_words)
+
+lst = list(range(10e6))
+deq = deque(range(10e6))
+
+def insert_or_delete(data_structure):
+    for _ in range(10):
+        index = random.choice(range(100))
+        data_structure.remove(index)
+        data_structure.insert(index, index)
+        
+%timeit insert_or_delete(lst)
+%timeit insert_or_delete(deq)
