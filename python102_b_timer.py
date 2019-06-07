@@ -56,7 +56,18 @@ class Clock:
             timer_title = 'Actively Working'
             self.remaining_sessions = self.work_sessions
             self.remaining_breaks = self.remaining_sessions - 1
+        else:
+            print('This is the same \' should be an error \' case as mentioned by that guy.')
         
-        self.end_time = datetime.now + timedelta(self.right_now.interval_length)
+        self.end_time = datetime.now() + timedelta(self.right_now.interval_length)
         time_string += self.end_time.strftime("%H:%M:%S")
+        Notify.init('test')
+        notify_me = Notify.Notification.new(title, time_string)
+        notify_me.show()
         
+    def ticking_clock(self):
+        self.change_event()
+        while True:
+            if datetime.now() >= self.end_time:
+                self.change_event()
+                
