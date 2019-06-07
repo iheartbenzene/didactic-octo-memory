@@ -1,4 +1,4 @@
-import data
+from data import *
 
 numlist = [1, 2, 3, 4, 5]
 list_of_numbers = [x + 1 for x in range(5)]
@@ -81,3 +81,8 @@ for k, v in bagels.items():
 for k, v in bagels.items():
     print('%s is %s, haha' % (k, v))
     
+print('From data us_state_abbrev: ', us_state_abbrev)
+
+print('From data us states_list: ', states_list[:5])
+
+print({state:us_state_abbrev[state] for state in states_list[:7] if state in us_state_abbrev})
