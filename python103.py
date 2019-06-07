@@ -115,4 +115,3 @@ for director, movies in directors.items():
     counts[director] += len(movies)
     
 print(counts.most_common(5))
-
