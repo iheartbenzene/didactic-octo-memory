@@ -1,5 +1,6 @@
 import argparse
 import subprocess
+import sys
 
 from time import sleep
 from datetime import datetime, date, timedelta
@@ -22,7 +23,7 @@ class Clock:
     end_time = None
     
     def __init__(self, work_time, short_break_time, long_break_time):
-        if None in (work_time or short_break_time or long_break_time):
+        if (work_time or short_break_time or long_break_time) == None:
             exit(1)
         self.work_time = currentState(work_time)
         self.short_break = currentState(short_break_time)
@@ -80,15 +81,18 @@ class Clock:
                 
 def main():
     try:
-        ap = argparse.ArgumentParser()
+        # ap = argparse.ArgumentParser()
         
-        ap.add_argument('--work_duration', help='the length of the working session', type=int, default=25)
-        ap.add_argument('--break_duration_short', help='the length of a short break', type=int, default=5)
-        ap.add_argument('--break_duration_long', help='the length of a long break', type=int, default=30)
+        # ap.add_argument('--work_duration', help='the length of the working session', type=int, default=25)
+        # ap.add_argument('--break_duration_short', help='the length of a short break', type=int, default=5)
+        # ap.add_argument('--break_duration_long', help='the length of a long break', type=int, default=30)
         
-        arguments = ap.parse_args()
+        # arguments = ap.parse_args()
         
-        time_clock = Clock(arguments.work_duration, arguments.break_duration_short, arguments.break_duration_long)
+        work_duration, break_duration_short, break_duration_long = map(int, sys.argv[1:4])
+        
+        # time_clock = Clock(arguments.work_duration, arguments.break_duration_short, arguments.break_duration_long)
+        time_clock = Clock(work_duration, break_duration_short, break_duration_long)
         time_clock.ticking_clock()
     except Exception as e:
         print('One or more arguments are invalid.', str(e))
