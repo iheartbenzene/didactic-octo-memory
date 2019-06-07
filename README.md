@@ -7,6 +7,10 @@ The 100 days of code challenge.
 
 This project uses `python 3.7.x`. 
 
+##### To clone the repo:
+
+SSH: `git clone git@github.com:iheartbenzene/didactic-octo-memory.git`
+
 ##### Python Installation Instructions.
 
 Linux: 
