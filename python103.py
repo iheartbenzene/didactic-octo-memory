@@ -34,4 +34,5 @@ challenges = {}
 for user, challenge in user_collection:
     challenges['user'].append('challenge')
 
-print(challenges)
+# print(challenges)
+
