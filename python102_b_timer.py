@@ -73,7 +73,8 @@ class Clock:
         while True:
             if datetime.now() >= self.end_time:
                 self.change_event()
-                sleep(0.1)
+                sleep(0.2)
+                
                 
 def main():
     try:
