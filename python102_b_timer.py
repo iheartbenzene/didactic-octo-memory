@@ -1,8 +1,8 @@
 import argparse
+import subprocess
 
 from time import sleep
 from datetime import datetime, date, timedelta
-from gi.repository import Notify
 
 class currentState:
     def __init__(self, interval_length):
@@ -22,12 +22,16 @@ class Clock:
     end_time = None
     
     def __init__(self, work_time, short_break_time, long_break_time):
-        if (work_time or short_break_time or long_break_time) == None:
+        if None in (work_time or short_break_time or long_break_time):
             exit(1)
         self.work_time = currentState(work_time)
         self.short_break = currentState(short_break_time)
         self.long_break = currentState(long_break_time)
         self.states = [self.work_time, self.short_break, self.long_break]
+        
+    def notifications(self, message):
+        subprocess.Popen(['notify-send', message])
+        return    
         
     def change_event(self):
         if not self.right_now == None and not self.right_now in self.states:
@@ -64,9 +68,7 @@ class Clock:
         
         self.end_time = datetime.now() + timedelta(self.right_now.interval_length)
         time_string += self.end_time.strftime("%H:%M:%S")
-        Notify.init('test')
-        notify_me = Notify.Notification.new(timer_title, time_string)
-        notify_me.show()
+        self.notifications(time_string)
         
     def ticking_clock(self):
         self.change_event()
@@ -93,4 +95,4 @@ def main():
         exit(1)
         
 if __name__ == '__main__':
-    main() 
+    main()
