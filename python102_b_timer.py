@@ -58,3 +58,4 @@ class Clock:
         
         self.end_time = datetime.now + timedelta(self.right_now.interval_length)
         time_string += self.end_time.strftime("%H:%M:%S")
+        
