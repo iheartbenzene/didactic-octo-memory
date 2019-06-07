@@ -81,3 +81,37 @@ def insert_or_delete(data_structure):
         
 # print(timeit.timeit(insert_or_delete(lst)))
 # print(timeit.timeit(insert_or_delete(deq)))
+
+# movie_data = "https://raw.githubusercontent.com/pybites/challenges/solutions/13/movie_metadata.csv"
+movie_data = 'movie_metadata.csv'
+movies_csv = 'movies.csv'
+# urlretrieve(movie_data, movies_csv)
+
+Movie = namedtuple('Movie', 'title year score')
+
+# import pandas as pd 
+
+def get_movie_by_director(movies_csv):
+    directors = defaultdict(list)
+    with open(movie_data, encoding='utf-8') as f:
+        for line in csv.DictReader(f):
+            try:
+                director = line['director_name']
+                movie = line['movie_title'].replace('\xa0', '')
+                year = int(line['title_year'])
+                score = float(line['imdb_score'])
+            except ValueError:
+                continue
+            
+            m = Movie(title = movie, year = year, score = score)
+            directors[director].append(m)
+    return directors
+
+directors = get_movie_by_director(movies_csv)
+print(directors['Christopher Nolan'])
+
+counts = Counter()
+for director, movies in directors.items():
+    counts[director] += len(movies)
+    
+print(counts.most_common(5))
