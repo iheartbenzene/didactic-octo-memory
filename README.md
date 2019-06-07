@@ -1,7 +1,7 @@
 # didactic-octo-memory
 100 Days of Code.
 
-`0.0% complete`.
+`6.0% complete`.
 
 The 100 days of code challenge.
 
