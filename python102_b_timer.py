@@ -52,18 +52,19 @@ class Clock:
             if self.remaining_breaks == 0:
                 self.right_now = self.long_break
                 timer_title = 'Take a long break.'
+            # elif self.right_now == self.short_break:
             else:
                 self.right_now = self.short_break
                 timer_title = 'Take a short break.'
-                # time_string = 'Break timer at:> '
+                time_string = 'Break timer at:> '
                 
-        elif self.right_now == self.short_break:
+        if self.right_now == self.short_break:
             self.remaining_breaks -= 1
             self.right_now = self.work_sessions
             timer_title = 'Actively Working'
             time_string = 'Short break timer at:> '
             
-        elif self.right_now == self.long_break:
+        if self.right_now == self.long_break:
             self.right_now = self.work_sessions
             timer_title = 'Actively Working'
             self.remaining_sessions = self.work_sessions
