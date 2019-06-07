@@ -1,5 +1,6 @@
 import csv
 import random
+import timeit
 
 from collections import defaultdict, namedtuple, Counter, deque
 from urllib.request import urlretrieve
@@ -69,8 +70,8 @@ for keyed, valued in sorted(commonly_used_words.items(), key = lambda x: x[1], r
 counted_common_words = Counter(words).most_common(5)
 print(counted_common_words)
 
-lst = list(range(10e6))
-deq = deque(range(10e6))
+lst = list(range(10000000))
+deq = deque(range(10000000))
 
 def insert_or_delete(data_structure):
     for _ in range(10):
@@ -78,5 +79,5 @@ def insert_or_delete(data_structure):
         data_structure.remove(index)
         data_structure.insert(index, index)
         
-%timeit insert_or_delete(lst)
-%timeit insert_or_delete(deq)
+# print(timeit.timeit(insert_or_delete(lst)))
+# print(timeit.timeit(insert_or_delete(deq)))
