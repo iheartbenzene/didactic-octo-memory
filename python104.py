@@ -38,10 +38,18 @@ except:
     print('Haha! Nice try but you can\'t assign items in a tuple.')
 
 print('Now popping: ')
-l1 = lst.pop()
-print('This, {}, got popped off just now'.format(l1))
+l7 = lst.pop()
+print('This, {}, got popped off just now'.format(l7))
 print('So our list is now: {}, implying that \'pop\' takes off the item at the end.'.format(lst))
 
 lst.insert(5, 'bar')
 print('Then `insert` gives: {}, at the particular index.'.format(lst))
+
+l2 = lst.pop(2)
+print('Okay, so I lied a little bit about `pop`.')
+print('Check it out, {}, came off at index 2.'.format(l2))
+print('So the list is now: ', lst)
+lst.insert(2, 'lala')
+print('The list with a new `insert`: ', lst)
+
 
