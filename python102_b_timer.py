@@ -33,7 +33,8 @@ class Clock:
     def notifications(self, message):
         subprocess.Popen(['notify-send', message])
         return    
-        
+    
+    
     def change_event(self):
         if not self.right_now == None and not self.right_now in self.states:
             exit(1)
