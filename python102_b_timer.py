@@ -1,4 +1,5 @@
 from datetime import datetime, date, timedelta
+from gi.repository import Notify
 
 class currentState:
     def __init__(self, interval_length):
