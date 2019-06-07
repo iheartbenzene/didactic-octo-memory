@@ -52,7 +52,6 @@ class Clock:
             if self.remaining_breaks == 0:
                 self.right_now = self.long_break
                 timer_title = 'Take a long break.'
-            # elif self.right_now == self.short_break:
             else:
                 self.right_now = self.short_break
                 timer_title = 'Take a short break.'
