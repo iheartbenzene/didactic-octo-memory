@@ -84,4 +84,7 @@ class GAN():
             discriminator_loss_imaginary = self.discriminator.train_on_batch(generate_imates, np.zeroes((half_batch, 1)))
             discriminator_loss = 0.5 * np.add(discriminator_loss_real, discriminator_loss_imaginary)
             
+            noise = np.random.normal(0, 1, (batch_size, 100))
+            
+            # YOU ARE HERE
             
