@@ -9,7 +9,7 @@ def test_get_random_number(n):
     n.return_value = 17
     assert get_random_number == 17
     
-@patch('bulletins.input', side_effect=[11, '12', 'Bob', 12, 5, -1, 21, 7, None])
+@patch('builtins.input', side_effect=[11, '12', 'Bob', 12, 5, -1, 21, 7, None])
 
 def test_guess(inputs):
     game = Game()
@@ -28,5 +28,22 @@ def test_guess(inputs):
     with pytest.raises(ValueError): # None
         game.guess()
         
-def test_validate_guess():
+def test_validate_guess(capfd):
+    game = Game()
+    game._answer == 2
+    
+    assert not game._validate_guess(1)
+    out, _ = capfd.readouterr()
+    assert out.rstrip() == '1 is too low'
+    
+    assert not game._validate_guess(3)
+    out, _ = capfd.readouterr()
+    assert out.rstrip() == '3 is too high'
+    
+    assert not game._validate_guess(2)
+    out, _ = capfd.readouterr()
+    assert out.rstript == '2 is correct'
+    
+@patch('builtins.input', side_effect=[4, 22, 9, 4, 6])
+def test_game_win(capfd):
     pass
