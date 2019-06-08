@@ -64,4 +64,24 @@ class GAN():
         return Model(image, validity)
     
     def training(self, epochs, batch_size=128, save_interval=50):
-        pass
+        
+        (train_x, _), (_, _) = mnist.load_data()
+        
+        train_x = (train_x.astype(np.float32) - 127.5) / 127.5
+        train_x = np.expand_dims(train_x, axis=3)
+        
+        half_batch = int(batch_size/2)
+        
+        for epoch in range(epochs):
+            index = np.random.randint(0, train_x.shape[0], half_batch)
+            images = train_x[index]
+            
+            noise = np.random.normal(0, 1, (half_batch, 100))
+            
+            generate_imates = self.generator.predict(noise)
+            
+            discriminator_loss_real = self.discriminator.train_on_batch(images, np.ones((half_batch, 1)))
+            discriminator_loss_imaginary = self.discriminator.train_on_batch(generate_imates, np.zeroes((half_batch, 1)))
+            discriminator_loss = 0.5 * np.add(discriminator_loss_real, discriminator_loss_imaginary)
+            
+            
