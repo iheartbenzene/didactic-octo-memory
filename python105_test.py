@@ -1,4 +1,4 @@
-import guess
+# import guess
 import random
 import pytest
 
@@ -6,8 +6,8 @@ from unittest.mock import patch
 from guess import get_random_number, Game
 
 @patch.object(random, 'randint')
-def test_get_random_number(n):
-    n.return_value = 17
+def test_get_random_number(m):
+    m.return_value = 17
     assert get_random_number == 17
     
 @patch('builtins.input', side_effect=[11, '12', 'Bob', 12, 5, -1, 21, 7, None])
@@ -59,3 +59,13 @@ def test_game_win(inputs, capfd):
                 '6 is correct', 'It took 3 guesses']
     
     output = [line.strip() for line in out.split('\n') if line.strip()]
+    
+    for line, expectation in zip(output, expected):
+        assert line == expectation
+        
+@patch('builtins.input', side_effect=[None, 5, 9, 14, 11, 12])
+def test_game_lose(inputs, capfd):
+    game = Game()
+    game._answer = 13
+    game()
+    assert game._win is False
