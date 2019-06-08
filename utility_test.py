@@ -7,11 +7,11 @@ class GAN():
         
         optimizer = Adam(0.0002, 0.5)
         
-        self.discriminator = self.build_discriminator()
+        self.discriminator = self.building_discriminator()
         self.discriminator.compile(loss='binary_crossentropy', optimizer=optimizer,
                                    metrics=['accuracy'])
         
-        self.generator = self.build_generator()
+        self.generator = self.building_generator()
         self.generator.compile(loss='binary_crossentropy', optimizer=optimizer)
         
         input_shape = Input(shape=(100, ))
@@ -24,7 +24,7 @@ class GAN():
         self.combined = Model(input_shape, validate)
         self.combined.compile(loss='binary_crossentropy', optimizer=optimizer)
         
-    def build_generator(self):
+    def building_generator(self):
         noisiness = (100, )
         model = Sequential()
         model.add(Dense(256, input_shape = noisiness))
@@ -46,7 +46,7 @@ class GAN():
         
         return Model(noise, image)
     
-    def build_discriminator(self):
+    def building_discriminator(self):
         image_shape = (self.image_rows, self.image_cols, self.channels)
         
         model = Sequential()
