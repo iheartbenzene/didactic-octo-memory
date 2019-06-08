@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 # from tensorflow.python.keras.models import Sequential
 # from tensorflow.python.keras.layers import BatchNormalization, Dense, Flatten, Input, LeakyReLU, Reshape
@@ -101,3 +102,21 @@ class GAN():
             generator_loss = self.combined.train_on_batch(noise, validate_y)
             
             print("%d [Discriminator loss: %0.4f, accuracy: %0.4f] [Generator loss: %0.4f]" % (epoch, discriminator_loss[0], 100 * discriminator_loss[1], generator_loss))
+            
+            if epoch % save_interval == 0:
+                self.save_the_image(epoch)
+                
+    def save_the_image(self, epoch):
+        p, q = 5, 5
+        
+        noise = np.random.normal(0, 1, (p * q, 100))
+        
+        generate_images = self.generator.predict(noise)
+        
+        generate_images = 0.5 * generate_images + 0.5
+        
+        figure, axis = plt.subplots(p, q)
+        
+        counts = 0
+        
+        
