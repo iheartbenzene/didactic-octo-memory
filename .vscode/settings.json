@@ -1,3 +1,7 @@
 {
-    "python.pythonPath": "/home/sanguine/anaconda3/bin/python"
+    "python.pythonPath": "/home/sanguine/anaconda3/bin/python",
+    "python.autoComplete.extraPaths": [
+        "${env:SPARK_HOME}/python",
+        "${env:SPARK_HOME}/python/pyspark"
+    ]
 }

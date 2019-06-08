@@ -1,7 +1,11 @@
 import numpy as np
 
-from tensorflow.python.keras.models import Sequential
-from tensorflow.python.keras.layers import Dense, LeakyReLU, Reshape, BatchNormalization, Flatten
+# from tensorflow.python.keras.models import Sequential
+# from tensorflow.python.keras.layers import BatchNormalization, Dense, Flatten, Input, LeakyReLU, Reshape
+
+from keras.models import Sequential
+from keras.layers import BatchNormalization, Dense, Flatten, Input, LeakyReLU, Reshape
+
 
 class GAN():
     def __init__(self):
