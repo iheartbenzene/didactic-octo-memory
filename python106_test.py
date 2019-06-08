@@ -17,7 +17,7 @@ from fizzbuzz import fizzbuzz
     (12, 'Fizz'),
     (13, 13),
     (14, 14),
-    (15, 'Fizz Buzz')
+    (15, 'Fizz Buzz'),
     (16, 16),
 ])
 
