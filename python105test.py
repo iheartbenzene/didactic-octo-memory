@@ -28,3 +28,5 @@ def test_guess(inputs):
     with pytest.raises(ValueError): # None
         game.guess()
         
+def test_validate_guess():
+    pass

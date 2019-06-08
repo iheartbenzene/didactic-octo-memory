@@ -3,5 +3,18 @@
     "python.autoComplete.extraPaths": [
         "${env:SPARK_HOME}/python",
         "${env:SPARK_HOME}/python/pyspark"
+    ],
+    "python.testing.pyTestArgs": [
+        "."
+    ],
+    "python.testing.unittestEnabled": true,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pyTestEnabled": false,
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        ".",
+        "-p",
+        "*test*.py"
     ]
 }
