@@ -8,13 +8,13 @@
         "."
     ],
     "python.testing.unittestEnabled": true,
-    "python.testing.nosetestsEnabled": false,
-    "python.testing.pyTestEnabled": false,
+    "python.testing.nosetestsEnabled": true,
+    "python.testing.pyTestEnabled": true,
     "python.testing.unittestArgs": [
         "-v",
         "-s",
         ".",
         "-p",
-        "*test*.py"
+        "*_test.py"
     ]
 }
