@@ -3,9 +3,9 @@ import numpy as np
 # from tensorflow.python.keras.models import Sequential
 # from tensorflow.python.keras.layers import BatchNormalization, Dense, Flatten, Input, LeakyReLU, Reshape
 
-from keras.models import Sequential
+from keras.models import Sequential, Model
 from keras.layers import BatchNormalization, Dense, Flatten, Input, LeakyReLU, Reshape
-
+from keras.optimizers import Adam
 
 class GAN():
     def __init__(self):
@@ -90,7 +90,7 @@ class GAN():
             generate_imates = self.generator.predict(noise)
             
             discriminator_loss_real = self.discriminator.train_on_batch(images, np.ones((half_batch, 1)))
-            discriminator_loss_imaginary = self.discriminator.train_on_batch(generate_imates, np.zeroes((half_batch, 1)))
+            discriminator_loss_imaginary = self.discriminator.train_on_batch(generate_imates, np.zeros((half_batch, 1)))
             discriminator_loss = 0.5 * np.add(discriminator_loss_real, discriminator_loss_imaginary)
             
             noise = np.random.normal(0, 1, (batch_size, 100))
