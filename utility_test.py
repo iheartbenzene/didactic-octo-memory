@@ -1,3 +1,8 @@
+import numpy as np
+
+from tensorflow.python.keras.models import Sequential
+from tensorflow.python.keras.layers import Dense, LeakyReLU, Reshape, BatchNormalization, Flatten
+
 class GAN():
     def __init__(self):
         self.image_rows = 28
