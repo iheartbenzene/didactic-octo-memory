@@ -6,6 +6,7 @@ import numpy as np
 from keras.models import Sequential, Model
 from keras.layers import BatchNormalization, Dense, Flatten, Input, LeakyReLU, Reshape
 from keras.optimizers import Adam
+from keras.datasets import mnist
 
 class GAN():
     def __init__(self):
