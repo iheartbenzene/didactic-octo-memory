@@ -119,4 +119,16 @@ class GAN():
         
         counts = 0
         
+        for i in range(p):
+            for j in range(q):
+                axis[i, j].imshow(generate_images[counts, :, :, 0], cmap='gray')
+                axis[i, j].axis('off')
+                counts += 1
+                
+        figure.savefig('image/mnist_%d.png' % epoch)
+        plt.close()
         
+        
+if __name__ = '__main__':
+    gan = GAN()
+    gan.training(120000, batch_size=32, save_interval=800)
