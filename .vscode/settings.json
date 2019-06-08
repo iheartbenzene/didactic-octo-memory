@@ -7,8 +7,8 @@
     "python.testing.pyTestArgs": [
         "."
     ],
-    "python.testing.unittestEnabled": true,
-    "python.testing.nosetestsEnabled": true,
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
     "python.testing.pyTestEnabled": true,
     "python.testing.unittestArgs": [
         "-v",
