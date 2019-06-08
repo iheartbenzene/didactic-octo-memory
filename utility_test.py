@@ -96,5 +96,8 @@ class GAN():
             
             noise = np.random.normal(0, 1, (batch_size, 100))
             
-            # YOU ARE HERE
+            validate_y = np.array([1] * batch_size)
             
+            generator_loss = self.combined.train_on_batch(noise, validate_y)
+            
+            print("%d [Discriminator loss: %0.4f, accuracy: %0.4f] [Generator loss: %0.4f]" % (epoch, discriminator_loss[0], 100 * discriminator_loss[1], generator_loss))
