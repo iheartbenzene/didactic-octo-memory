@@ -26,6 +26,6 @@ Mac:
 
 ###### Python package manager:
 + `sudo apt-get install python-pip` for python `2.7.x`
-++ `pip install -r requirements.txt`
++ + `pip install -r requirements.txt`
 + `sudo apt-get install python3-pip` for python `3.7.x`
-++ `pip install -r requirements.txt` or `pip3 install -r requirements.txt`
++ + `pip install -r requirements.txt` or `pip3 install -r requirements.txt`
