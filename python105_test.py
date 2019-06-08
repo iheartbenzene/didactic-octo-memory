@@ -1,3 +1,4 @@
+import guess
 import random
 import pytest
 
@@ -30,7 +31,7 @@ def test_guess(inputs):
         
 def test_validate_guess(capfd):
     game = Game()
-    game._answer == 2
+    game._answer = 2
     
     assert not game._validate_guess(1)
     out, _ = capfd.readouterr()
@@ -45,5 +46,11 @@ def test_validate_guess(capfd):
     assert out.rstript == '2 is correct'
     
 @patch('builtins.input', side_effect=[4, 22, 9, 4, 6])
-def test_game_win(capfd):
-    pass
+def test_game_win(inputs, capfd):
+    game = Game()
+    game._answer = 6
+    
+    game()
+    assert game._win is True
+    
+    
