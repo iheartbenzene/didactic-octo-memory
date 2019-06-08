@@ -125,10 +125,9 @@ class GAN():
                 axis[i, j].axis('off')
                 counts += 1
                 
-        figure.savefig('image/mnist_%d.png' % epoch)
-        plt.close()
+        figure.savefig('gan_image/mnist_%d.png' % epoch)
+        plt.close()        
         
-        
-if __name__ = '__main__':
+if __name__ == '__main__':
     gan = GAN()
     gan.training(120000, batch_size=32, save_interval=800)

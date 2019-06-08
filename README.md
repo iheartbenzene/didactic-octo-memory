@@ -11,6 +11,11 @@ This project uses `python 3.7.x`.
 
 SSH: `git clone git@github.com:iheartbenzene/didactic-octo-memory.git`
 
+##### To run the GAN:
+
++ `python utility_test.py`. 
++ Then check the folder `gan_images` to see the results.
+
 ##### Python Installation Instructions.
 
 Linux: 
