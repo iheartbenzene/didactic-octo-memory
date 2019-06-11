@@ -1,6 +1,6 @@
 import random
 
-class Ceature:
+class Creature:
     def __init__(self, name, level):
         self.name = name
         self.level = level
@@ -9,7 +9,7 @@ class Ceature:
         roll = random.randint(1, 6)
         return roll * self.level
     
-class Dragon(Ceature):
+class Dragon(Creature):
     def __init__(self, name, level, armor, breath):
         super().__init__(name, level)
         self.armor = armor
@@ -22,9 +22,11 @@ class Dragon(Ceature):
             value = value * 2
         return value
 
-def Wizard(Ceature):
-    my_roll = self.defense_roll()
-    creature_roll = creature.defense_roll
+class Wizard(Creature):
     
-    return my_roll >= creature_roll
+    def attack_roll(self, creature):
+        my_roll = self.defense_roll()
+        creature_roll = creature.defense_roll
+    
+        return my_roll >= creature_roll
     
